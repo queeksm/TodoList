@@ -100,8 +100,18 @@ const setNewActivity = (evt) => {
 
 const setEditproject = (evt) => {
   const index = evt.target.id.replace('editProject', '');
+  const name = document.getElementById(`projectFormNameInput${index}`);
+  const objective = document.getElementById(`projectFormObjectiveInput${index}`);
+  const startDate = document.getElementById(`projectFormStartDateInput${index}`);
+  const endDate = document.getElementById(`projectFormCompletionDateInput${index}`);
+  const description = document.getElementById(`projectFormDescriptionInput${index}`);
   const projectEditForm = document.getElementById(`projectFormContainer${index}`);
   projectEditForm.classList.remove('hidden');
+  name.value = projects[index].getName;
+  objective.value = projects[index].getObjective;
+  startDate.value = projects[index].getStartDate;
+  endDate.value = projects[index].getCompletionDate;
+  description.value = projects[index].getDescription;
 };
 
 const editProject = (evt) => {
@@ -125,7 +135,7 @@ const editProject = (evt) => {
     projects[index].setStartDate = startDate.value;
     projects[index].setCompletionDate = endDate.value;
     projectName.innerHTML = name.value;
-    projectDates.innerHTML = startDate.value;
+    projectDates.innerHTML = `${startDate.value}  /  ${endDate.value}`;
     projectObjective.innerHTML = objective.value;
     projectDescription.innerHTML = description.value;
     form.className += ' hidden';
@@ -160,13 +170,15 @@ const newProject = () => {
   const form = document.getElementById('defaultFormContainer');
   const name = document.getElementById('defaultProjectNameInput');
   const objective = document.getElementById('defaultProjectObjectiveInput');
-  const startDate = document.getElementById('defaultProjectDatesInput');
+  const startDate = document.getElementById('defaultProjectStartInput');
+  const endDate = document.getElementById('defaultProjectDatesInput');
   const description = document.getElementById('defaultProjectDescriptionInput');
   const alert = document.getElementById('masterAlert');
-  if (name.value !== '' && objective.value !== '' && startDate.value !== '' && description.value !== '') {
+  if (name.value !== '' && objective.value !== '' && startDate.value !== '' && description.value !== '' && endDate.value !== '' && startDate.value < endDate.value) {
     const project = new Project(name.value, objective.value);
     project.setDescription = description.value;
     project.setStartDate = startDate.value;
+    project.setCompletionDate = endDate.value;
     projects.push(project);
 
     for (let index = 0; index < projects.length; index += 1) {
@@ -179,6 +191,8 @@ const newProject = () => {
     startDate.value = '';
     description.value = '';
     alert.innerHTML = '';
+  } else if (startDate.value >= endDate.value) {
+    alert.innerHTML = 'The end date must be posterior to the start date ';
   } else {
     alert.innerHTML = 'You must enter all the required fields';
   }

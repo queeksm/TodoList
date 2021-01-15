@@ -226,7 +226,7 @@ const mainRenderer = (key = 'blank', index = 'delta', actIndex = 'gamma', pFunct
         projectContainer.appendChild(projectActivities);
         mainContainer.appendChild(projectContainer);
         projectName.innerHTML = project.getName;
-        projectDates.innerHTML = project.getStartDate;
+        projectDates.innerHTML = `${project.getStartDate}  /  ${project.getCompletionDate}`;
         projectObjective.innerHTML = project.getObjective;
         projectDescription.innerHTML = project.getDescription;
         break;
@@ -362,16 +362,19 @@ const mainRenderer = (key = 'blank', index = 'delta', actIndex = 'gamma', pFunct
         const newProject = document.createElement('button');
         const defaultFormContainer = document.createElement('div');
         const defaultProjectName = document.createElement('div');
+        const defaultProjectStart = document.createElement('div');
         const defaultProjectDates = document.createElement('div');
         const defaultProjectObjective = document.createElement('div');
         const defaultProjectDescription = document.createElement('div');
 
         const defaultProjectNameLabel = document.createElement('label');
+        const defaultProjectStartLabel = document.createElement('label');
         const defaultProjectDatesLabel = document.createElement('label');
         const defaultProjectObjectiveLabel = document.createElement('label');
         const defaultProjectDescriptionLabel = document.createElement('label');
 
         const defaultProjectNameInput = document.createElement('input');
+        const defaultProjectStartInput = document.createElement('input');
         const defaultProjectDatesInput = document.createElement('input');
         const defaultProjectObjectiveInput = document.createElement('input');
         const defaultProjectDescriptionInput = document.createElement('input');
@@ -387,33 +390,39 @@ const mainRenderer = (key = 'blank', index = 'delta', actIndex = 'gamma', pFunct
         acceptNewProject.innerHTML = 'Create';
 
         defaultProjectNameLabel.innerHTML = 'Project Name:';
+        defaultProjectStartLabel.innerHTML = 'Project Starting Date:';
         defaultProjectDatesLabel.innerHTML = 'Project Finishing Date:';
         defaultProjectObjectiveLabel.innerHTML = 'Project Objective:';
         defaultProjectDescriptionLabel.innerHTML = 'Project Description:';
 
         defaultFormContainer.setAttribute('id', 'defaultFormContainer');
         defaultProjectName.setAttribute('id', 'defaultProjectName');
+        defaultProjectStart.setAttribute('id', 'defaultStartDates');
         defaultProjectDates.setAttribute('id', 'defaultProjectDates');
         defaultProjectObjective.setAttribute('id', 'defaultProjectObjective');
         defaultProjectDescription.setAttribute('id', 'defaultProjectDescription');
 
         defaultFormContainer.setAttribute('class', 'defaultFormContainer hidden');
         defaultProjectName.setAttribute('class', 'defaultProjectName');
+        defaultProjectStart.setAttribute('class', 'defaultProjectDates');
         defaultProjectDates.setAttribute('class', 'defaultProjectDates');
         defaultProjectObjective.setAttribute('class', 'defaultProjectObjective');
         defaultProjectDescription.setAttribute('class', 'defaultProjectDescription');
 
         defaultProjectNameInput.setAttribute('id', 'defaultProjectNameInput');
+        defaultProjectStartInput.setAttribute('id', 'defaultProjectStartInput');
         defaultProjectDatesInput.setAttribute('id', 'defaultProjectDatesInput');
         defaultProjectObjectiveInput.setAttribute('id', 'defaultProjectObjectiveInput');
         defaultProjectDescriptionInput.setAttribute('id', 'defaultProjectDescriptionInput');
 
         defaultProjectNameInput.setAttribute('class', 'defaultProjectNameInput');
+        defaultProjectStartInput.setAttribute('class', 'defaultProjectStartInput');
         defaultProjectDatesInput.setAttribute('class', 'defaultProjectDatesInput');
         defaultProjectObjectiveInput.setAttribute('class', 'defaultProjectObjectiveInput');
         defaultProjectDescriptionInput.setAttribute('class', 'defaultProjectDescriptionInput');
 
         defaultProjectNameInput.setAttribute('type', 'text');
+        defaultProjectStartInput.setAttribute('type', 'date');
         defaultProjectDatesInput.setAttribute('type', 'date');
         defaultProjectObjectiveInput.setAttribute('type', 'text');
         defaultProjectDescriptionInput.setAttribute('type', 'text');
@@ -425,12 +434,15 @@ const mainRenderer = (key = 'blank', index = 'delta', actIndex = 'gamma', pFunct
         newProject.innerHTML = 'New Project';
 
         defaultProjectName.appendChild(defaultProjectNameInput);
+        defaultProjectStart.appendChild(defaultProjectStartInput);
         defaultProjectDates.appendChild(defaultProjectDatesInput);
         defaultProjectObjective.appendChild(defaultProjectObjectiveInput);
         defaultProjectDescription.appendChild(defaultProjectDescriptionInput);
 
         defaultFormContainer.appendChild(defaultProjectNameLabel);
         defaultFormContainer.appendChild(defaultProjectName);
+        defaultFormContainer.appendChild(defaultProjectStartLabel);
+        defaultFormContainer.appendChild(defaultProjectStart);
         defaultFormContainer.appendChild(defaultProjectDatesLabel);
         defaultFormContainer.appendChild(defaultProjectDates);
         defaultFormContainer.appendChild(defaultProjectObjectiveLabel);
