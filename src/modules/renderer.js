@@ -20,6 +20,7 @@ const mainRenderer = (key = 'blank', index = 'delta', actIndex = 'gamma', pFunct
         const projectButtons = document.createElement('div');
         const projectAttrContainer = document.createElement('div');
         const projectMainContainer = document.createElement('div');
+        const projectBigTitle = document.createElement('div');
 
         const projectFormContainer = document.createElement('div');
         const projectFormName = document.createElement('div');
@@ -69,6 +70,11 @@ const mainRenderer = (key = 'blank', index = 'delta', actIndex = 'gamma', pFunct
         activityFormDescriptionLabel.innerHTML = 'Activity Description';
         activityFormDateLabel.innerHTML = 'Due Date';
         activityFormPriorityLabel.innerHTML = 'Priority';
+
+        projectBigTitle.setAttribute('id', `projectBigTitle${index}`);
+        projectBigTitle.setAttribute('class', 'projectBigTitle');
+
+        projectBigTitle.innerHTML = `Project ${project.getName}`;
 
         projectAttrContainer.setAttribute('id', `projectAttrContainer${index}`);
         projectAttrContainer.setAttribute('class', 'projectAttrContainer');
@@ -221,6 +227,7 @@ const mainRenderer = (key = 'blank', index = 'delta', actIndex = 'gamma', pFunct
         projectMainContainer.appendChild(projectAttrContainer);
         projectMainContainer.appendChild(projectButtons);
 
+        projectContainer.appendChild(projectBigTitle);
         projectContainer.appendChild(projectMainContainer);
         projectContainer.appendChild(projectFormContainer);
         projectContainer.appendChild(projectActivities);
@@ -239,6 +246,7 @@ const mainRenderer = (key = 'blank', index = 'delta', actIndex = 'gamma', pFunct
         const actmainContainer = document.getElementById(`projectActContainer${index}`);
 
         const activityContainer = document.createElement('div');
+        const activityBigTitle = document.createElement('div');
         const activityTitle = document.createElement('div');
         const activityDescription = document.createElement('div');
         const activityDate = document.createElement('div');
@@ -263,6 +271,9 @@ const mainRenderer = (key = 'blank', index = 'delta', actIndex = 'gamma', pFunct
 
         actAttrContainer.setAttribute('id', `actAttrContainer${index}`);
         actAttrContainer.setAttribute('class', 'actAttrContainer');
+
+        activityBigTitle.setAttribute('id', `activityBigTitle${actIndex}`);
+        activityBigTitle.setAttribute('class', 'activityBigTitle');
 
         actInfoContainer.setAttribute('id', `actInfoContainer${index}`);
         actInfoContainer.setAttribute('class', 'actInfoContainer');
@@ -344,12 +355,14 @@ const mainRenderer = (key = 'blank', index = 'delta', actIndex = 'gamma', pFunct
         actInfoContainer.appendChild(actAttrContainer);
         actInfoContainer.appendChild(actButtons);
 
+        activityContainer.appendChild(activityBigTitle);
         activityContainer.appendChild(actInfoContainer);
         activityContainer.appendChild(activityFormContainer);
 
         actmainContainer.appendChild(activityContainer);
 
         activityTitle.innerHTML = activity.getTitle;
+        activityBigTitle.innerHTML = `Activity ${activity.getTitle}`;
         activityDescription.innerHTML = activity.getDescription;
         activityDate.innerHTML = activity.getDueDate;
         activityPriority.innerHTML = activity.getPriority;

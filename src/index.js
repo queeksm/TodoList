@@ -7,6 +7,17 @@ const projects = [];
 const setEditActivity = (evt) => {
   const index = evt.target.id.replace('editActButton', '');
   const form = document.getElementById(`activityFormContainer${index}`);
+  const arr = index.split('');
+  const title = document.getElementById(`activityFormTitleInput${index}`);
+  const description = document.getElementById(`activityFormDescriptionInput${index}`);
+  const date = document.getElementById(`activityFormDueDateInput${index}`);
+  const priority = document.getElementById(`activityFormPriorityInput${index}`);
+  const activities = projects[arr[0]].getActivities;
+
+  title.value = activities[arr[1]].getTitle;
+  description.value = activities[arr[1]].getDescription;
+  date.value = activities[arr[1]].getDueDate;
+  priority.value = activities[arr[1]].getPriority;
   form.classList.remove('hidden');
 };
 
@@ -19,6 +30,7 @@ const editActivity = (evt) => {
   const date = document.getElementById(`activityFormDueDateInput${index}`);
   const priority = document.getElementById(`activityFormPriorityInput${index}`);
   const alert = document.getElementById('masterAlert');
+  const bigTitle = document.getElementById(`activityBigTitle${arr[1]}`);
 
   const titleChange = document.getElementById(`activityTitle${index}`);
   const descriptionChange = document.getElementById(`activityDescription${index}`);
@@ -35,6 +47,7 @@ const editActivity = (evt) => {
     descriptionChange.innerHTML = description.value;
     dateChange.innerHTML = date.value;
     prioChange.innerHTML = priority.value;
+    bigTitle.innerHTML = `Activity ${title.value}`;
     form.className += ' hidden';
     title.value = '';
     description.value = '';
@@ -126,6 +139,7 @@ const editProject = (evt) => {
   const projectDates = document.getElementById(`projectDates${index}`);
   const projectObjective = document.getElementById(`projectObjective${index}`);
   const projectDescription = document.getElementById(`projectDescription${index}`);
+  const projectBigTitle = document.getElementById(`projectBigTitle${index}`);
   const alert = document.getElementById('masterAlert');
 
   if (name.value !== '' && objective.value !== '' && startDate.value !== '' && description.value !== '' && endDate.value !== '') {
@@ -138,6 +152,7 @@ const editProject = (evt) => {
     projectDates.innerHTML = `${startDate.value}  /  ${endDate.value}`;
     projectObjective.innerHTML = objective.value;
     projectDescription.innerHTML = description.value;
+    projectBigTitle.innerHTML = `Project ${name.value}`;
     form.className += ' hidden';
     name.value = '';
     objective.value = '';
