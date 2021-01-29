@@ -74,7 +74,7 @@ const mainRenderer = (key = 'blank', index = 'delta', actIndex = 'gamma', pFunct
         projectBigTitle.setAttribute('id', `projectBigTitle${index}`);
         projectBigTitle.setAttribute('class', 'projectBigTitle');
 
-        projectBigTitle.innerHTML = `Project ${project.getName}`;
+        projectBigTitle.innerHTML = `Project ${project.name}`;
 
         projectAttrContainer.setAttribute('id', `projectAttrContainer${index}`);
         projectAttrContainer.setAttribute('class', 'projectAttrContainer');
@@ -232,10 +232,10 @@ const mainRenderer = (key = 'blank', index = 'delta', actIndex = 'gamma', pFunct
         projectContainer.appendChild(projectFormContainer);
         projectContainer.appendChild(projectActivities);
         mainContainer.appendChild(projectContainer);
-        projectName.innerHTML = project.getName;
-        projectDates.innerHTML = `${project.getStartDate}  /  ${project.getCompletionDate}`;
-        projectObjective.innerHTML = project.getObjective;
-        projectDescription.innerHTML = project.getDescription;
+        projectName.innerHTML = project.name;
+        projectDates.innerHTML = `${project.startDate}  /  ${project.completionDate}`;
+        projectObjective.innerHTML = project.objective;
+        projectDescription.innerHTML = project.description;
         break;
       } else {
         break;
@@ -361,11 +361,11 @@ const mainRenderer = (key = 'blank', index = 'delta', actIndex = 'gamma', pFunct
 
         actmainContainer.appendChild(activityContainer);
 
-        activityTitle.innerHTML = activity.getTitle;
-        activityBigTitle.innerHTML = `Activity ${activity.getTitle}`;
-        activityDescription.innerHTML = activity.getDescription;
-        activityDate.innerHTML = activity.getDueDate;
-        activityPriority.innerHTML = activity.getPriority;
+        activityTitle.innerHTML = activity.title;
+        activityBigTitle.innerHTML = `Activity ${activity.title}`;
+        activityDescription.innerHTML = activity.description;
+        activityDate.innerHTML = activity.dueDate;
+        activityPriority.innerHTML = activity.priority;
       }
       break;
 
